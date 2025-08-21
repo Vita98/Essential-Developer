@@ -6,24 +6,12 @@
 //
 
 import XCTest
-
-class RemoteFeedLoader {
-    let client: HTTPClient
-    let url: URL
-    
-    init(url: URL, client: HTTPClient) {
-        self.url = url
-        self.client = client
-    }
-    
-    func load() {
-        client.get(from: url)
-    }
-}
-
-protocol HTTPClient {
-    func get(from url: URL)
-}
+import EssentialFeed
+//@testable import EssentialFeed -- Like so we can access also internal protocol and class
+/*
+ A better approach is to test the module through the public interfaces,
+ se we can test the expected behavior as ca client module
+*/
 
 final class RemoteFeedLoaderTests: XCTestCase {
 
